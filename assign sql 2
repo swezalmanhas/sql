@@ -1,0 +1,40 @@
+create table emps(
+    EMP_NO INT,
+     ENAME VARCHAR(60),
+    JOB VARCHAR(60),
+   
+    COMMISSION INT ,
+    DEPT_NO INT NOT NULL,
+    PRIMARY KEY(EMP_NO)
+);
+insert into emps(EMP_NO,ENAME,JOB,COMMISSION,DEPT_NO)
+VALUES('1','swezal','clerk','2000','10');
+insert into emps(EMP_NO,ENAME,JOB,COMMISSION,DEPT_NO)
+VALUES('2','aaryan','clerk',NULL,'15');
+insert into emps(EMP_NO,ENAME,JOB,COMMISSION,DEPT_NO)
+VALUES('3','arhygan','saleperson','2000','10');
+insert into emps(EMP_NO,ENAME,JOB,COMMISSION,DEPT_NO)
+VALUES('4','wsadjda','saleperson',NULL,'15');
+insert into emps(EMP_NO,ENAME,JOB,COMMISSION,DEPT_NO)
+VALUES('5','wajida','clerk','20000','10');
+select * from emps;
+
+DESC emps;
+select EMP_NO,ENAME from emps where DEPT_NO='10';  --1
+select ENAME from emps where COMMISSION >'2000'; --2
+select ENAME,JOB from emps where JOB='clerk'or JOB='saleperson'; --3
+select * from emps where COMMISSION between 2000 and 3000; --4
+select * from emps where DEPT_NO='10'or DEPT_NO='15'; --5
+select * from emps where COMMISSION is NULL; --6
+select * from emps order by DEPT_NO  ASC;  --7
+select * from emps where ENAME like '%a%a'; --8
+select * from emps where ENAME like '_a%' or ENAME like '_A%';  --9
+select * from emps where ENAME like '%a'; --10
+select max(COMMISSION) from emps where DEPT_NO='10';
+select min(COMMISSION) from emps where DEPT_NO='10';  --11
+select avg(COMMISSION) from emps where DEPT_NO='10';
+select sum(COMMISSION ) from emps where DEPT_NO='10';
+
+select count(COMMISSION) from emps where DEPT_NO='10';  --12
+select sum(COMMISSION) from emps where JOB='clerk'; --13
+select (12*12)/13 from dual; --15
