@@ -1,0 +1,35 @@
+select chr(69) from dual;--1
+select concat('swezal', 'manhas') from dual;--2
+select instr('swezal','e') from dual; --3
+select length ('swezal') from dual; --4
+select lpad('swezal','10','*') from dual; --5
+select rpad('swezal','10','*') from dual; --6
+select ltrim('     swezal') from dual; --7
+select rtrim('swezal        ') from dual;  --8
+select replace('swezalaawrea','a','l') from dual; --9
+select substr('swezal','3','5') from dual; --10
+select initcap('swezal') from dual; --11
+select lower('SWEZAL') from dual; --12
+select upper('swezal') from dual; --13
+select translate('today is sunday','sunday','monday') from dual; --14
+select abs(12.3) from dual; --15
+select ceil(5.6) from dual; --16
+select cos(10) from dual;  --17
+select exp(3.4) from dual; --18
+select floor(4.8) from dual; --19
+select mod(5,4) from dual; --20
+select power(10,3) from dual; --21
+select round(66.75874,4) from dual; --22
+select sign(-12) from dual; --23
+select sqrt(45) from dual; --24
+select trunc(12.46336,3) from dual; --25
+select sysdate from dual;  --26
+select greatest(1,2,3,4) from dual; --31
+select least (1,2,3,4,5) from dual; --32
+select months_between(to_date('2003-01-11','yyyy-mm-dd'),to_date('2002-12-11','yyyy-mm-dd')) from dual; --29
+select next_day(to_date('2023-12-11','yyyy-mm-dd'),'monday') from dual; --30
+
+
+
+
+
