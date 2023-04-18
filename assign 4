@@ -1,0 +1,143 @@
+---1
+create table emp(
+    empno INT,
+    ename varchar(60),
+    job varchar(60) check(job in('prof','ap','Lect')),
+    salary INT NOT NULL,
+    deptno INT default 10,
+    primary key(empno)
+);
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('1','swezal','ap','10000','15');
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('2','swezal2','Lect','20000','20');
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('3','swezal3','prof','30000','20');
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('4','swezal4','Lect','40000','15');
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('5','swezal5','ap','50000','');
+select * from emp;
+
+--2
+create table book
+(
+    rno INT,
+    doi date NOT NULL,
+    dor date NOT NULL,
+    check(dor>doi),
+    primary key(rno)
+);
+INSERT INTO book(rno,doi,dor)
+VALUES('1',to_date('2022-11-12','yyyy-mm-dd'),to_date('2023-01-12','yyyy-mm-dd'));
+INSERT INTO book(rno,doi,dor)
+VALUES('2',to_date('2022-10-12','yyyy-mm-dd'),to_date('2023-11-12','yyyy-mm-dd'));
+INSERT INTO book(rno,doi,dor)
+VALUES('3',to_date('2022-03-12','yyyy-mm-dd'),to_date('2023-01-12','yyyy-mm-dd'));
+INSERT INTO book(rno,doi,dor)
+VALUES('4',to_date('2022-11-12','yyyy-mm-dd'),to_date('2023-11-12','yyyy-mm-dd'));
+INSERT INTO book(rno,doi,dor)
+VALUES('5',to_date('2022-11-12','yyyy-mm-dd'),to_date('2023-11-15','yyyy-mm-dd'));
+select * from book;
+
+--3
+create table st(
+    rno INT,
+    class char,
+    marks INT check(marks>0),
+    primary key(rno,class)
+);
+insert into st(rno,class,marks)
+values('1','4','98');
+insert into st(rno,class,marks)
+values('2','4','92');
+insert into st(rno,class,marks)
+values('3','4','95');
+insert into st(rno,class,marks)
+values('4','4','99');
+insert into st(rno,class,marks)
+values('5','4','99');
+select * from st;
+
+--4
+create table s
+(
+    sno int,
+    sname varchar(60) NOT NULL,
+    city varchar(60) NOT NULL,
+    primary key(sno)
+    
+    );
+insert into s(sno,sname,city)
+values('1','swezal','agra');
+insert into s(sno,sname,city)
+values('2','swezal2','pathankot');
+insert into s(sno,sname,city)
+values('3','swezal3','chd');
+insert into s(sno,sname,city)
+values('4','swezal4','delhi');
+select * from s;
+--5
+create table p (
+    pno INT,
+    pname varchar(60),
+    color varchar(60),
+    primary key(pno)
+);
+insert into p(pno,pname,color)
+values('1','swezal','red');
+insert into p(pno,pname,color)
+values('2','swezal2','yellow');
+insert into p(pno,pname,color)
+values('3','swezal3','black');
+insert into p(pno,pname,color)
+values('4','swezal4','red4');
+insert into p(pno,pname,color)
+values('5','swezal5','red5');
+select * from p;
+--6
+create table sp(
+    sno int,
+    pno int,
+    qty int,
+    primary key(sno,pno),
+    constraint s_fk foreign key(sno) references s(sno),
+    constraints p_fk foreign key(pno) references p(pno)
+    
+);
+insert into sp(sno,pno,qty)
+    values('1','1','45');
+select * from sp;
+
+--7
+create table dept(
+    deptno INT,
+    dname  varchar (60) check(dname in('acc','comp','elect')),
+    primary key (deptno)
+);
+
+--8
+create table emps (
+    empno INT,
+    ename varchar(60) NOT null,
+    job varchar(60) check(job in ('prof','ap','lect')),
+    sal INT NOT NULL,
+    deptno INT,
+    primary key(empno),
+    constraints f_fk foreign key(deptno) references dept(deptno)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
