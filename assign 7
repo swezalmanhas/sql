@@ -1,0 +1,51 @@
+create table emp(
+    empno INT,
+    ename varchar(60),
+    job varchar(60) check(job in('prof','ap','Lect')),
+    salary INT NOT NULL,
+    deptno INT default 10,
+    primary key(empno)
+);
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('1','swezal','ap','10000','15');
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('2','swezal2','Lect','20000','20');
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('3','swezal3','prof','30000','20');
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('4','swezal4','Lect','40000','15');
+INSERT INTO emp(empno,ename,job,salary,deptno)
+VALUES('5','swezal5','ap','50000','');
+select * from emp;
+
+--1
+desc emp;
+--2
+select constraint_name,constraint_type from user_constraints where table_name='EMP';
+--3
+alter table emp drop column ename;
+select * from emp;
+--5
+alter table emp add constraints f_fk foreign key(deptno) references dept(deptno);
+--6
+alter table emp modify salary int;
+desc emp;
+--7
+alter table emp modify job varchar(100);
+--8
+alter table emp add comm int;
+select * from emp;
+--9
+alter table emp drop column deptno;
+--10
+create table emp_copy as select * from emp;
+--12
+update emp set ename='swezal',job='clerk' where empno='1';
+--11
+create table new_dept_table as select deptno as no , dname as name from dept;
+select * from  new_dept_table;
+
+--14
+drop table emp;
+--15
+drop table emp_copy;
