@@ -1,0 +1,79 @@
+create table sailors(
+    sid INT,
+    sname varchar(60),
+    rating INT,
+    age INT,
+    primary key(sid)
+);
+INSERT INTO sailors(sid,sname,rating,age)
+VALUES('1','swezal','7','45.0');
+INSERT INTO sailors(sid,sname,rating,age)
+VALUES('2','swezal2','1','17.0');
+INSERT INTO sailors(sid,sname,rating,age)
+VALUES('3','swezal3','8','48.0');
+INSERT INTO sailors(sid,sname,rating,age)
+VALUES('4','swezal4','10','4.0');
+
+
+select * from sailors;
+create table boats(
+    bid INT,
+    bname varchar(60),
+    color varchar (60),
+    primary key(bid)
+);
+
+create table reserves(
+    sid INT,
+    bid INT,
+    days date,
+    foreign key(sid) references sailors(sid),
+    foreign key(bid) references boats(bid)
+    
+);
+insert into boats(bid,bname,color)
+values('101','aryan1','red');
+insert into boats(bid,bname,color)
+values('201','aryan2','yellow');
+insert into boats(bid,bname,color)
+values('301','aryan3','black');
+insert into boats(bid,bname,color)
+values('401','aryan4','r');
+select * from boats;
+
+
+insert into reserves(sid,bid,days)
+values('1','201',to_date('2022-11-12','yyyy-mm-dd'));
+insert into reserves(sid,bid,days)
+values('1','101',to_date('2022-11-12','yyyy-mm-dd'));
+insert into reserves(sid,bid,days)
+values('2','301',to_date('2022-11-12','yyyy-mm-dd'));
+insert into reserves(sid,bid,days)
+values('3','401',to_date('2022-11-12','yyyy-mm-dd'));
+select * from reserves;
+
+--1
+select sname,age from sailors;
+--2
+select * from boats where color='red' or color='blue';
+--3
+select min(age) from sailors;
+select max(age)from sailors;
+--4
+select age from sailors where sname like 'a%a' and length(sname)=3;
+--5
+select avg(rating) from sailors;
+--6
+select * from sailors where rating>7;
+--7
+select count(*) from sailors where sname='swezal';
+--8
+select color from boats where bid in (select bid from reserves where sid in (select sid from sailors where sname='swezal'));
+--9
+select * from sailors where sid in (select sid from reserves where bid='101');
+--10
+select * from sailors where sid in(select sid from reserves where bid in (select bid from boats where color ='black'));
+--11
+select * from sailors where sid in (select sid from reserves where bid='301');
+--12
+select * from sailors where sid in(select sid from reserves where bid in(select bid from boats where color='r'));
